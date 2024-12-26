@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS Admission Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fa; /* Light background for the body */
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+        .logo {
+            width: 100px; /* Adjust logo size */
+            margin: 0 auto; /* Center the logo */
+            display: block; /* Make the logo a block element */
+            margin-bottom: 20px; /* Spacing below logo */
+        }
+        .form-container {
+            max-width: 800px; /* Max width for the form */
+            margin: auto; /* Center the form */
+            padding: 20px; /* Padding around the form */
+            background-color: white; /* White background for the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        .header {
+            text-align: center; /* Center the header text */
+            margin-bottom: 20px; /* Spacing below header */
+        }
+        .header h1 {
+            font-size: 24px; /* Adjust font size */
+        }
+        .header h2 {
+            font-size: 20px; /* Adjust font size */
+        }
+        h1 {
+            color: #3050F0;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-left">
+            <img src="/img/badge1.png" alt="School Logo" class="logo" style="text-align: center;"> <!-- Replace with your logo path -->
+        </div>
+        <div class="header">
+            <h1>NYAPUI SENIOR SECONDARY SCHOOL OF EXCELLENCE</h1>
+            <p>Combema Village, Off Kenema City, Kenema District.</p>
+            <p>P.O Box 1445, Kenema-Sierra Leone, West Africa.</p>
+            <p>Tel: +232 78 894 260 | Email: info@nyapuischool.com</p>
+            <h2>SSS ADMISSION FORM</h2>
+        </div>
+        <div class="form-container">
+            <form id="sssAdmissionForm" enctype="multipart/form-data" method="POST" action="submit_application.php">
+                <input type="hidden" name="source" value="sss">
+                <div class="form-group">
+                    <label for="pupilName">Name of Pupil:</label>
+                    <input type="text" class="form-control" id="pupilName" name="name" placeholder="Last, Middle, First" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="placeOfBirth">Place of Birth:</label>
+                    <input type="text" class="form-control" id="placeOfBirth" name="place_of_birth" placeholder="Place & District" required>
+                </div>
+                <div class="form-group">
+                    <label for="fathersName">Father’s Name:</label>
+                    <input type="text" class="form-control" id="fathersName" name="fathers_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="fathersOccupation">Occupation:</label>
+                    <input type="text" class="form-control" id="fathersOccupation" name="fathers_occupation" required>
+                </div>
+                <div class="form-group">
+                    <label for="fathersPhone">Phone Number:</label>
+                    <input type="tel" class="form-control" id="fathersPhone" name="fathers_phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="mothersName">Mother’s Name:</label>
+                    <input type="text" class="form-control" id="mothersName" name="mothers_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mothersOccupation">Occupation:</label>
+                    <input type="text" class="form-control" id="mothersOccupation" name="mothers_occupation" required>
+                </div>
+                <div class="form-group">
+                    <label for="mothersPhone">Phone Number:</label>
+                    <input type="tel" class="form-control" id="mothersPhone" name="mothers_phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="guardianName">Name of Guardian:</label>
+                    <input type="text" class="form-control" id="guardianName" name="guardian_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="guardianOccupation">Occupation:</label>
+                    <input type="text" class="form-control" id="guardianOccupation" name="guardian_occupation" required>
+                </div>
+                <div class="form-group">
+                    <label for="guardianPhone">Phone Number:</label>
+                    <input type="tel" class="form-control" id="guardianPhone" name="guardian_phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="homeAddress">Home Address:</label>
+                    <textarea class="form-control" id="homeAddress" name="home_address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="formerSchool">Name of Former School:</label>
+                    <input type="text" class="form-control" id="formerSchool" name="former_school" required>
+                </div>
+                <div class="form-group">
+                    <label for="careerChoice">Choice of Career (Please state two):</label>
+                    <input type="text" class="form-control" id="careerChoice" name="career_choice" required>
+                </div>
+                <div class="form-group">
+                    <label for="beceResults">Upload BECE Results:</label>
+                    <input type="file" class="form-control-file" id="beceResults" name="bece_results" accept=".pdf,.jpg,.jpeg,.png" required>
+                </div>
+                <div class="form-group">
+                    <label>Subjects Passed:</label>
+                    <div id="subjectsPassedContainer">
+                        <div class="subject-input">
+                            <input type="text" class="form-control" name="subjects_passed[]" placeholder="Subject Name" required>
+                            <button type="button" class="btn btn-danger btn-sm remove-subject-button" style="margin-top: 5px;">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" id="addSubjectButton">Add Another Subject</button>
+                </div>
+                <div class="form-group">
+                    <label for="yearOfExamination">Year of Examination:</label>
+                    <input type="text" class="form-control" id="yearOfExamination" name="year_of_examination" required>
+                </div>
+                <div class="form-group">
+                    <label for="religion">Religion of Candidate:</label>
+                    <input type="text" class="form-control" id="religion" name="religion" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('addSubjectButton').addEventListener('click', function() {
+            const subjectsContainer = document.getElementById('subjectsPassedContainer');
+            const newSubjectInput = document.createElement('div');
+            newSubjectInput.className = 'subject-input';
+            newSubjectInput.innerHTML = `
+                <input type="text" class="form-control" name="subjects_passed[]" placeholder="Subject Name" required>
+                <button type="button" class="btn btn-danger btn-sm remove-subject-button" style="margin-top: 5px;">Remove</button>
+            `;
+            subjectsContainer.appendChild(newSubjectInput);
+        });
+
+        // Event delegation to handle remove button clicks
+        document.getElementById('subjectsPassedContainer').addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-subject-button')) {
+                event.target.parentElement.remove(); // Remove the subject input
+            }
+        });
+    </script>
+</body>
+</html>

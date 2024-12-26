@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Admission - Nyapui Secondary School of Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Updated header styles */
+        .header {
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+            color: black;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3050F0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3050F0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            transform: scaleX(1);
+        }
+
+        .donate-btn {
+            background-color: #3050F0;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Hero section styles */
+        .hero {
+            position: relative;
+            height: calc(100vh - 100px);
+            background-image: url('/img/admission.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+        }
+
+        /* Scrolling section styles */
+        .scrolling-section {
+            background-color: #f0f0f0;
+            padding: 40px 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .scrolling-text {
+            font-size: 1.5em;
+            color: #3050F0;
+            white-space: nowrap;
+            animation: scrollText 20s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Content section styles */
+        .content-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            color: #3050F0;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Updated Footer styles */
+        .footer {
+            background: linear-gradient(to bottom, #e6e9f0 0%, #1e3c72 100%);
+            color: #ffffff;
+            padding: 50px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .footer-left {
+            flex: 0 0 50%;
+        }
+
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer-left h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer-left p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-right {
+            flex: 0 0 40%;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #e6e9f0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-left, .footer-right {
+                flex: 0 0 100%;
+            }
+            
+            .footer-nav {
+                align-items: flex-start;
+                margin-top: 30px;
+            }
+        }
+        /* Updated Responsive styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                align-self: flex-end;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .donate-btn {
+                margin-top: 10px;
+                align-self: center;
+            }
+
+            .hero {
+                height: 70vh;
+                margin-top: 80px;
+            }
+
+            .hero-subtitle {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .scrolling-text {
+                font-size: 1.2em;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-left, .footer-right {
+                flex: 0 0 100%;
+            }
+            
+            .footer-nav {
+                align-items: flex-start;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 80vh;
+            }
+
+            .hero-subtitle {
+                font-size: 1.8em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            .scrolling-text {
+                font-size: 1em;
+            }
+
+            .content-section h2 {
+                font-size: 1.3em;
+            }
+
+            .content-section p {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .hero-subtitle {
+                font-size: 1.5em;
+            }
+
+            .hero-content p {
+                font-size: 0.8em;
+            }
+
+            .scrolling-text {
+                font-size: 0.9em;
+            }
+
+            .content-section h2 {
+                font-size: 1.1em;
+            }
+
+            .content-section p {
+                font-size: 0.8em;
+            }
+        }
+
+
+        
+        * Base styling for the main container */
+        .main-content {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Styling for the main content */
+        .admission-section {
+            background: white;
+            color: #003399;
+            text-align: center;
+        }
+
+        /* Header styling */
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 500;
+            color: #003399;
+        }
+
+        /* Container for the process steps */
+        .admission-process {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .process-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Each process step */
+        .process-step {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        /* Hover effect for each process step */
+        .process-step:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
+            background-color: #f1f1f1;
+            border-color: #003399;
+        }
+
+        /* Icon styling */
+        .process-step .icon {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .process-step .icon svg {
+            width: 50px;
+            height: 50px;
+            fill: #003399;
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Icon hover effect */
+        .process-step:hover .icon {
+            transform: rotate(15deg);
+        }
+
+        .process-step:hover .icon svg {
+            fill: #003399;
+        }
+
+        /* Title styling */
+        .process-step h3 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #003399;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        /* Description styling */
+        .process-step p {
+            font-size: 1.1em;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        /* Final step styling */
+        .final-step {
+            background-color: orange;
+            color: #ffffff;
+        }
+
+        .final-step h3 {
+            color: #ffffff;
+        }
+
+        /* Arrow styling */
+        .arrow {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #003399;
+            border-radius: 50%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #003399;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .arrow::before {
+            content: '→';
+        }
+
+        .arrow:hover {
+            background-color: #003399;
+            color: #ffffff;
+            transform: rotate(45deg);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .admission-process {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-step {
+                width: 90%;
+            }
+        }
+
+
+        * Base styling for the main container */
+        .content-wrapper {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        /* Styling for the admission section */
+        .admission-section {
+            padding: 60px 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Header styling */
+        .section-header {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 500;
+            color: #003399;
+        }
+
+        /* Container for the process steps */
+        .process-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .step-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Each process step */
+        .process-item {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        /* Hover effect for each process step */
+        .process-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
+            background-color: #f1f1f1;
+            border-color: #003399;
+        }
+
+        /* Icon styling */
+        .process-item .icon-wrapper {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .process-item .icon-wrapper svg {
+            width: 50px;
+            height: 50px;
+            fill: #003399;
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Icon hover effect */
+        .process-item:hover .icon-wrapper {
+            transform: rotate(15deg);
+        }
+
+        .process-item:hover .icon-wrapper svg {
+            fill: #00aaff;
+        }
+
+        /* Title styling */
+        .process-item-title {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #003399;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        /* Description styling */
+        .process-item-description {
+            font-size: 1.1em;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        /* Final step styling */
+        .final-step-item {
+            background-color: orange;
+            color: #ffffff;
+        }
+
+        .final-step-item .process-item-title {
+            color: #ffffff;
+        }
+
+        /* Arrow styling */
+        .arrow-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #003399;
+            border-radius: 50%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #003399;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .arrow-icon::before {
+            content: '→';
+        }
+
+        .arrow-icon:hover {
+            background-color: #003399;
+            color: #ffffff;
+            transform: rotate(45deg);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .process-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-item {
+                width: 90%;
+            }
+        }
+
+
+
+        .custom-body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .open-house-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            color: #003399;
+        }
+
+        .open-house-header {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 500;
+            color: #003399;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .tour-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .tour-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            animation: slideIn 1.5s ease forwards;
+            opacity: 0;
+        }
+
+        .tour-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .tour-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+            border-color: #003399;
+        }
+
+        .tour-icon {
+            font-size: 50px;
+            color: #003399;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            animation: rotateIcon 1.5s ease-in-out infinite alternate;
+        }
+
+        .tour-card:hover .tour-icon {
+            transform: rotate(360deg);
+            color: #00aaff;
+        }
+
+        .tour-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: orange;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        .tour-description {
+            font-size: 1.1rem;
+            color: #555555;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .tour-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #003399;
+            color: #ffffff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: bounceIn 2s ease infinite alternate;
+        }
+
+        .tour-button:hover {
+            background-color: #00aaff;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes rotateIcon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(15deg); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tour-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tour-card {
+                width: 90%;
+            }
+        }
+
+
+         /* Global Styles */
+         .main-container {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Fees Structure Container */
+        .fees-structure {
+            background-color: white;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .fees-structure:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Title */
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Keyframes for Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        th:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hover effect on table rows */
+        tbody tr:hover {
+            background-color: #d1e7dd;
+            cursor: pointer;
+        }
+
+        tbody tr {
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Term rows with different styling */
+        .term-row {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        /* Enhanced responsive styles */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .footer-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-subtitle {
+                font-size: 2.2em;
+            }
+
+            .process-item, .tour-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                align-self: flex-end;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .donate-btn {
+                margin-top: 10px;
+                align-self: center;
+            }
+
+            .hero {
+                height: 60vh;
+                margin-top: 120px;
+            }
+
+            .hero-subtitle {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .process-item, .tour-card {
+                width: 100%;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-left, .footer-right {
+                flex: 0 0 100%;
+            }
+
+            .footer-nav {
+                align-items: flex-start;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-subtitle {
+                font-size: 1.8em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            .scrolling-text {
+                font-size: 1em;
+            }
+
+            .content-section h2, .section-header, .open-house-header {
+                font-size: 1.8em;
+            }
+
+            .content-section p, .process-item-description, .tour-description {
+                font-size: 0.9em;
+            }
+
+            .process-item-title, .tour-title {
+                font-size: 1.3em;
+            }
+
+            .fees-structure {
+                padding: 10px;
+            }
+
+            table {
+                font-size: 0.8em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-subtitle {
+                font-size: 1.5em;
+            }
+
+            .hero-content p {
+                font-size: 0.8em;
+            }
+
+            .content-section h2, .section-header, .open-house-header {
+                font-size: 1.5em;
+            }
+
+            .process-item-title, .tour-title {
+                font-size: 1.1em;
+            }
+
+            table {
+                font-size: 0.7em;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+        }
+
+        /* Ensure content is never too wide on large screens */
+        @media (min-width: 1400px) {
+            .container, .nav-container, .footer-container {
+                max-width: 1320px;
+            }
+        }
+
+        /* Adjust font sizes for very small screens */
+        @media (max-width: 320px) {
+            body {
+                font-size: 14px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3em;
+            }
+
+            .content-section h2, .section-header, .open-house-header {
+                font-size: 1.3em;
+            }
+
+            .process-item-title, .tour-title {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img src="/img/badge1.png" alt="Nyapui Secondary School of Excellence" class="logo">
+            <div class="menu-toggle">☰</div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="academics.html">Academics</a>
+                <a href="admission.html" class="active">Admissions</a>
+                <a href="news.html">News & Events</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="donate-btn">Donate</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-subtitle">Admission to Nyapui Secondary School</h1>
+            <p>Join our community of learners and shape your future with excellence.</p>
+        </div>
+    </section>
+
+    <section class="scrolling-section">
+        <div class="scrolling-text">
+            Empowering the next generation of leaders through quality education and innovation
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Admission Process</h2>
+            <p>At Nyapui Secondary School of Excellence, we welcome students who are eager to learn, grow, and contribute to our vibrant community. Our admission process is designed to identify students who will thrive in our challenging academic environment and contribute positively to our school culture.</p>
+        </div>
+    </section>
+    <div class="admission-section">
+        <h2>Senior Secondary School Admission Requirement</h2>
+<p>Admission to our senior school begins promptly after the release of the Basic Education Certificate Examination (BECE) results.
+    The process requires:
+    </p>
+        <div class="admission-process">
+            <div class="process-container">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 5H6V3H13V5Z" fill="#ff6600"/>
+                            <path d="M13 7H6V5H13V7Z" fill="#ff6600"/>
+                            <path d="M13 9H6V7H13V9Z" fill="#ff6600"/>
+                            <path d="M13 11H6V9H13V11Z" fill="#ff6600"/>
+                            <path d="M13 13H6V11H13V13Z" fill="#ff6600"/>
+                            <path d="M20 4H15V2H20V4Z" fill="#ff6600"/>
+                            <path d="M20 8H15V6H20V8Z" fill="#ff6600"/>
+                            <path d="M20 12H15V10H20V12Z" fill="#ff6600"/>
+                            <path d="M20 16H15V14H20V16Z" fill="#ff6600"/>
+                            <path d="M20 20H15V18H20V20Z" fill="#ff6600"/>
+                        </svg>
+                    </div>
+                    <h3>Step 1</h3>
+                    <p>Photocopy of BECE result/testimonial</p>
+                </div>
+    
+                <span class="arrow"></span>
+    
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 4H5C3.9 4 3 4.9 3 6V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V6C21 4.9 20.1 4 19 4ZM19 18H5V6H19V18ZM14 16H10V14H14V16ZM14 12H10V10H14V12ZM14 8H10V6H14V8Z" fill="#ff6600"/>
+                        </svg>
+                    </div>
+                    <h3>Step 2</h3>
+                    <p>Two passport photos</p>
+                </div>
+    
+                <span class="arrow"></span>
+    
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H16C17.1 22 18 21.1 18 20V6L16 2ZM6 0H16C17.1 0 18 0.9 18 2V6H6V2C6 0.9 6.9 0 8 0ZM6 8H16V20H6V8ZM10 12H14V14H10V12ZM10 16H14V18H10V16Z" fill="#ff6600"/>
+                        </svg>
+                    </div>
+                    <h3>Step 3</h3>
+                    <p>Copy of birth certificate</p>
+                </div>
+    
+                <span class="arrow"></span>
+    
+                <!-- Final Step -->
+                <div class="process-step final-step">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4 8V20H20V8L12 2ZM12 4.5L17 8H7L12 4.5ZM6 10H18V18H6V10ZM10 12H14V14H10V12ZM10 16H14V18H10V16Z" fill="#ffffff"/>
+                        </svg>
+                    </div>
+                    <h3>Final Step</h3>
+                    <p>A student must be in her previous school uniform
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr> <br> <br> <br>
+    <body class="content-wrapper">
+
+        <div class="admission-section">
+            <h2 class="section-header">Junior Secondary School Admission Requirement</h2>
+            <p>Similar procedure for senior school is required to students to gain admission into JSS1. It follows shortly upon the release of the National Primary School Examination (NPSE) result.
+                The process requires:
+                </p>
+                <div class="step-wrapper">
+                    <!-- Step 1 -->
+                    <div class="process-item">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM5 1H19C20.1 1 21 1.9 21 3V5H3V3C3 1.9 3.9 1 5 1ZM5 19V7H19V19H5ZM7 9H17V11H7V9ZM7 13H17V15H7V13ZM7 17H17V19H7V17Z" fill="#003399"/>
+                            </svg>
+                        </div>
+                        <h3 class="process-item-title">Step 1</h3>
+                        <p class="process-item-description">A photocopy of NPSE result/testimonial</p>
+                    </div>
+        
+                    <span class="arrow-icon"></span>
+        
+                    <!-- Step 2 -->
+                    <div class="process-item">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 19H3C1.9 19 1 19.9 1 21V23H23V21C23 19.9 22.1 19 21 19ZM3 17H21C21.55 17 22 17.45 22 18C22 18.55 21.55 19 21 19H3C2.45 19 2 18.55 2 18C2 17.45 2.45 17 3 17ZM23 5V3H1V5H23ZM23 9H1V7H23V9ZM23 13H1V11H23V13ZM23 17H1V15H23V17Z" fill="#003399"/>
+                            </svg>
+                        </div>
+                        <h3 class="process-item-title">Step 2</h3>
+                        <p class="process-item-description">Two passport photos</p>
+                    </div>
+        
+                    <span class="arrow-icon"></span>
+        
+                    <!-- Step 3 -->
+                    <div class="process-item">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 3H2C0.9 3 0 3.9 0 5V19C0 20.1 0.9 21 2 21H22C23.1 21 24 20.1 24 19V5C24 3.9 23.1 3 22 3ZM2 1H22C23.1 1 24 1.9 24 3V5H0V3C0 1.9 0.9 1 2 1ZM2 19V7H22V19H2ZM6 13H18V15H6V13ZM6 9H18V11H6V9ZM6 17H18V19H6V17Z" fill="#003399"/>
+                            </svg>
+                        </div>
+                        <h3 class="process-item-title">Step 3</h3>
+                        <p class="process-item-description">Copy of birth certificate</p>
+                    </div>
+        
+                    <span class="arrow-icon"></span>
+        
+                    <!-- Final Step -->
+                    <div class="process-item final-step-item">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L4 8V20H20V8L12 2ZM12 4.5L17 8H7L12 4.5ZM6 10H18V18H6V10ZM8 12H10V16H8V12ZM14 12H16V16H14V12Z" fill="#ffffff"/>
+                            </svg>
+                        </div>
+                        <h3 class="process-item-title">Final Step</h3>
+                        <p class="process-item-description">Submit application in school uniform</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <p><center> <blockquote>Admission into the school is only limited to JSS1 and SSS1.</blockquote></center></p>
+    <hr> <br> <br> <br>
+    <div class="fees-structure">
+        <h2>2024/2025 Fees Structure</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th colspan="2">Junior Secondary School (JSS)</th>
+                    <th colspan="2"></th>
+                </tr>
+                <tr>
+                    <th>Terms</th>
+                    <th colspan="2">Domestic Students</th>
+                    <th colspan="2">Foreign Students</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Tuition</th>
+                    <th>Boarding Home</th>
+                    <th>Tuition</th>
+                    <th>Boarding Home</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="term-row">
+                    <td>First-term</td>
+                    <td>N/A</td>
+                    <td>2,000</td>
+                    <td>5,500</td>
+                    <td>2,000</td>
+                </tr>
+                <tr class="term-row">
+                    <td>Second-term</td>
+                    <td>N/A</td>
+                    <td>2,000</td>
+                    <td>5,500</td>
+                    <td>2,000</td>
+                </tr>
+                <tr class="term-row">
+                    <td>Third-term</td>
+                    <td>N/A</td>
+                    <td>2,000</td>
+                    <td>5,500</td>
+                    <td>2,000</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th colspan="2"></th>
+                    <th colspan="2">Senior Secondary School (SSS)</th>
+                    <th colspan="2"></th>
+                </tr>
+                <tr>
+                    <th>Terms</th>
+                    <th colspan="2">Domestic Students</th>
+                    <th colspan="2">Foreign Students</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Tuition</th>
+                    <th>Boarding Home</th>
+                    <th>Tuition</th>
+                    <th>Boarding Home</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="term-row">
+                    <td>First-term</td>
+                    <td>N/A</td>
+                    <td>2,000</td>
+                    <td>6,500</td>
+                    <td>2,000</td>
+                </tr>
+                <tr class="term-row">
+                    <td>Second-term</td>
+                    <td>N/A</td>
+                    <td>2,000</td>
+                    <td>6,500</td>
+                    <td>2,000</td>
+                </tr>
+                <tr class="term-row">
+                    <td>Third-term</td>
+                    <td>N/A</td>
+                    <td>2,000</td>
+                    <td>6,500</td>
+                    <td>2,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+        <hr> <br> <br> <br>
+    <body class="custom-body">
+
+        <div class="open-house-section">
+            <h1 class="open-house-header">Open House and Tours</h1>
+            <div class="tour-container">
+                <!-- Tour Card 1 -->
+                <div class="tour-card">
+                    <div class="tour-icon">🏫</div>
+                    <h2 class="tour-title">School Tour</h2>
+                    <p class="tour-description">
+                        Experience our school campus and explore the facilities. Our guided tour includes a walk-through of classrooms, labs, and recreational areas.
+                    </p>
+                    <a href="#" class="tour-button">Book Now</a>
+                </div>
+        
+                <!-- Tour Card 2 -->
+                <div class="tour-card">
+                    <div class="tour-icon">📅</div>
+                    <h2 class="tour-title">Open House Event</h2>
+                    <p class="tour-description">
+                        Attend our open house to meet staff, students, and explore the unique offerings at our school. Get a first-hand look at the school’s programs.
+                    </p>
+                    <a href="#" class="tour-button">Register</a>
+                </div>
+        
+                <!-- Tour Card 3 -->
+                <div class="tour-card">
+                    <div class="tour-icon">🗓️</div>
+                    <h2 class="tour-title">Custom Visit</h2>
+                    <p class="tour-description">
+                        Schedule a personalized visit to our campus at your convenience. We offer one-on-one guided tours to suit your needs and schedule.
+                    </p>
+                    <a href="#" class="tour-button">Schedule a Visit</a>
+                </div>
+            </div>
+        </div>
+        <hr> <br> <br> <br>
+
+    <!-- Add more sections specific to admissions here -->
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="img/badge1.png" alt="Nyapui Secondary School of Excellence Logo" class="footer-logo">
+                <h2 style="color: white;">Nyapui Secondary School of Excellence</h2>
+                <p>Combema Village, Kenema</p>
+                <p>Sierra Leone</p>
+                <p>+232 78 894260</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/facebook.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/instagram.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="academics.html">Academics</a>
+                    <a href="admission.html">Admissions</a>
+                    <a href="news.html">News and Events</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">Jobs at Nyapui</a>
+                    <a href="#">Resource Lab</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
+                if (!isClickInside && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // Close menu when window is resized to larger than mobile breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

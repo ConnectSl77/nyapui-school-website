@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us - Nyapui Secondary School of Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+            color: black;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3050F0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3050F0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            transform: scaleX(1);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .donate-btn {
+            background-color: #3050F0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-btn:hover {
+            background-color: #1e3c72;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+        }
+
+        /* Scrolling section styles */
+        .scrolling-section {
+            background-color: #f0f0f0;
+            padding: 40px 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .scrolling-text {
+            font-size: 1.5em;
+            color: #3050F0;
+            white-space: nowrap;
+            animation: scrollText 20s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+         /* Updated Footer styles */
+         .footer {
+            background: linear-gradient(to bottom, #e6e9f0 0%, #1e3c72 100%);
+            color: #ffffff;
+            padding: 50px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .footer-left {
+            flex: 0 0 50%;
+        }
+
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer-left h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer-left p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-right {
+            flex: 0 0 40%;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #e6e9f0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-left, .footer-right {
+                flex: 0 0 100%;
+            }
+            
+            .footer-nav {
+                align-items: flex-start;
+                margin-top: 30px;
+            }
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                align-self: flex-end;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .donate-btn {
+                margin-top: 10px;
+                align-self: center;
+            }
+
+            .hero {
+                height: 60vh;
+                margin-top: 120px;
+            }
+
+            .hero-subtitle {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-left, .footer-right {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-subtitle {
+                font-size: 1.8em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            .scrolling-text {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Additional styles for contact form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            background-color: #3050F0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #1e3c72;
+        }
+
+        .contact-section {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 20px;
+        }
+
+        .contact-left {
+            flex: 0 0 45%;
+        }
+
+        .contact-left h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-item h3 {
+            font-size: 1.2em;
+            color: #3050F0;
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .contact-right {
+            flex: 0 0 45%;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .privacy-policy {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .submit-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .contact-left,
+            .contact-right {
+                flex: 0 0 100%;
+            }
+        }
+
+        /* Contact section styles */
+        .contact-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            color: #3050F0;
+            margin-bottom: 40px;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 40px;
+        }
+
+        .contact-info h3 {
+            color: #3050F0;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            background-color: #3050F0;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #1e3c72;
+        }
+
+        /* Map styles */
+        .map-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .map-section h2 {
+            text-align: center;
+            color: #3050F0;
+            margin-bottom: 40px;
+        }
+
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img src="/img/badge1.png" alt="Nyapui Secondary School of Excellence" class="logo">
+            <div class="menu-toggle">☰</div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="academics.html">Academics</a>
+                <a href="admission.html">Admissions</a>
+                <a href="news.html">News & Events</a>
+                <a href="contact.html" class="active">Contact Us</a>
+            </nav>
+            <button class="donate-btn">Donate</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-subtitle">Contact Us</h1>
+            <p>Get in touch with Nyapui Secondary School of Excellence.</p>
+        </div>
+    </section>
+
+    <section class="scrolling-section">
+        <div class="scrolling-text">
+            Empowering the next generation of leaders through quality education and innovation
+        </div>
+    </section>
+
+    <!-- Contact section -->
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-left">
+            <h2>Get in touch with us.</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <img src="img/logo24.png" alt="Location icon">
+                    <div>
+                        <h3>VISIT ANYTIME</h3>
+                        <p>Combema Village, Kenema Sierra Leone</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <img src="img/message.png" alt="Email icon">
+                    <div>
+                        <h3>SEND EMAIL</h3>
+                        <p>nyapuischool@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <img src="img/call (2).png" alt="Phone icon">
+                    <div>
+                        <h3>HAVE A QUESTION ?</h3>
+                        <p>+232 78 894260</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-right">
+            <form class="contact-form">
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Write Comment" required></textarea>
+                <div class="form-footer">
+                    <label class="privacy-policy">
+                        <input type="checkbox" required>
+                        I agree to the privacy policy
+                    </label>
+                    <button type="submit" class="submit-btn">Submit →</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+    <!-- Add this section just before the footer -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Our Location</h2>
+            <div id="map" class="map-container"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="img/badge1.png" alt="Nyapui Secondary School of Excellence Logo" class="footer-logo">
+                <h2>Nyapui Secondary School of Excellence</h2>
+                <p>Combema Village, Kenema</p>
+                <p>Sierra Leone</p>
+                <p>+232 78 894260</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/facebook.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/instagram.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/youtube.png" alt="YouTube"></a>
+                    <a href="mailto:nyapuischool@gmail.com" class="social-icon"><img src="img/em.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="academics.html">Academics</a>
+                    <a href="admission.html">Admissions</a>
+                    <a href="news.html">News and Events</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">Jobs at Nyapui</a>
+                    <a href="#">Resource Lab</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
+                if (!isClickInside && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // Close menu when window is resized to larger than mobile breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // Google Maps initialization
+            function initMap() {
+                const combemaVillage = { lat: 7.8736, lng: -11.1885 }; // Approximate coordinates for Kenema, Sierra Leone
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: combemaVillage
+                });
+                const marker = new google.maps.Marker({
+                    position: combemaVillage,
+                    map: map,
+                    title: 'Nyapui Secondary School of Excellence'
+                });
+            }
+
+            // Call initMap when the Google Maps script is loaded
+            window.initMap = initMap;
+        });
+    </script>
+</body>
+</html>

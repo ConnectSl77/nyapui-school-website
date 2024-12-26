@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>News & Events - Nyapui Secondary School of Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+            color: black;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3050F0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3050F0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            transform: scaleX(1);
+        }
+
+        .donate-btn {
+            background-color: #3050F0;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Hero section styles */
+        .hero {
+            position: relative;
+            height: calc(100vh - 100px);
+            background-image: url('/img/newa.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+        }
+
+        /* Scrolling section styles */
+        .scrolling-section {
+            background-color: #f0f0f0;
+            padding: 40px 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .scrolling-text {
+            font-size: 1.5em;
+            color: #3050F0;
+            white-space: nowrap;
+            animation: scrollText 20s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* News content styles */
+        .news-content {
+            padding: 40px 20px;
+        }
+
+        .news-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .news-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .news-item h2 {
+            color: #3050F0;
+        }
+
+        .news-item .date {
+            color: #666;
+            font-style: italic;
+        }
+
+     /* Updated Footer styles */
+     .footer {
+        background: linear-gradient(to bottom, #e6e9f0 0%, #1e3c72 100%);
+        color: #ffffff;
+        padding: 50px 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .footer-left {
+        flex: 0 0 50%;
+    }
+
+    .footer-logo {
+        width: 80px;
+        margin-bottom: 20px;
+    }
+
+    .footer-left h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .footer-left p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .social-icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer-right {
+        flex: 0 0 40%;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .footer-nav a {
+        color: #ffffff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-size: 14px;
+        transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+        color: #e6e9f0;
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+        }
+        
+        .footer-left, .footer-right {
+            flex: 0 0 100%;
+        }
+        
+        .footer-nav {
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+    }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                align-self: flex-end;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .donate-btn {
+                margin-top: 10px;
+                align-self: center;
+            }
+
+            .hero {
+                height: 60vh;
+                margin-top: 120px;
+            }
+
+            .hero-subtitle {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-left, .footer-right {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-subtitle {
+                font-size: 1.8em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            .scrolling-text {
+                font-size: 1.2em;
+            }
+
+            .news-item h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Calendar styles */
+        .events-calendar {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-controls input,
+        .calendar-controls select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #calendar {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .fc-header-toolbar {
+            background-color: #3050F0;
+            color: #fff;
+            padding: 15px;
+        }
+
+        .fc-day-header {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+        }
+
+        .fc-event {
+            background-color: #3050F0;
+            border: none;
+            border-radius: 3px;
+            padding: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fc-event:hover {
+            background-color: #1e3c72;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .calendar-controls {
+                flex-direction: column;
+            }
+
+            .calendar-controls input,
+            .calendar-controls select {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+
+        .news-events {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .news-events h2 {
+            text-align: center;
+            color: #3050F0;
+            margin-bottom: 40px;
+        }
+
+        .news-events-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .tab-button {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: #3050F0;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-item.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .news-item.featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-item .news-content {
+            padding: 20px;
+        }
+
+        .news-item h3 {
+            color: #3050F0;
+            margin-bottom: 10px;
+        }
+
+        .news-item .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .news-item .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3050F0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .events-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .event-item {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-date {
+            background-color: #3050F0;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 80px;
+        }
+
+        .event-date .day {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .event-date .month {
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            padding: 15px;
+        }
+
+        .event-details h3 {
+            color: #3050F0;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .news-item.featured {
+                grid-template-columns: 1fr;
+            }
+
+            .event-item {
+                flex-direction: column;
+            }
+
+            .event-date {
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 10px;
+            }
+
+            .event-date .day {
+                margin-right: 5px;
+            }
+        }
+
+        /* School Gallery styles */
+        .school-gallery {
+            padding: 60px 0;
+            background-color: #f0f0f0;
+        }
+
+        .school-gallery h2 {
+            text-align: center;
+            color: #3050F0;
+            margin-bottom: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        /* Add this CSS to your existing styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Hide the menu by default on small screens */
+            }
+
+            .nav-menu.active {
+                display: flex; /* Show the menu when active */
+                flex-direction: column; /* Stack items vertically */
+            }
+
+            .menu-toggle {
+                display: block; /* Show the menu toggle button */
+                cursor: pointer; /* Change cursor to pointer */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img src="/img/badge1.png" alt="Nyapui Secondary School of Excellence" class="logo">
+            <div class="menu-toggle">☰</div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="academics.html">Academics</a>
+                <a href="admission.html">Admissions</a>
+                <a href="news.html" class="active">News & Events</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="donate-btn">Donate</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-subtitle">News & Events</h1>
+            <p>Stay updated with the latest happenings at Nyapui Secondary School of Excellence.</p>
+        </div>
+    </section>
+
+    <section class="scrolling-section">
+        <div class="scrolling-text">
+            Empowering the next generation of leaders through quality education and innovation
+        </div>
+    </section>
+
+    
+
+    <section class="news-events">
+        <div class="container">
+            <h2>Latest News & Upcoming Events</h2>
+            <div class="news-events-tabs">
+                <button class="tab-button active" data-tab="news">News</button>
+                <button class="tab-button" data-tab="events">Events</button>
+            </div>
+            <div class="tab-content active" id="news-tab">
+                <div class="news-grid">
+                    <article class="news-item featured">
+                        <img src="img/featured-news.jpg" alt="Featured News">
+                        <div class="news-content">
+                            <h3>School Wins National Science Competition</h3>
+                            <p class="date">June 15, 2023</p>
+                            <p>Our students have brought home the gold in the National Science Competition, showcasing their innovative projects and deep understanding of scientific principles.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <h3>New Computer Lab Opens</h3>
+                        <p class="date">June 10, 2023</p>
+                        <p>We're excited to announce the opening of our state-of-the-art computer lab, enhancing our students' access to technology.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </article>
+                    <article class="news-item">
+                        <h3>Annual Sports Day Announced</h3>
+                        <p class="date">June 5, 2023</p>
+                        <p>Mark your calendars! Our Annual Sports Day is scheduled for July 15th. Get ready for a day of athletic excellence and school spirit.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </article>
+                    <article class="news-item">
+                        <h3>Student Art Exhibition</h3>
+                        <p class="date">May 30, 2023</p>
+                        <p>Join us for a celebration of creativity at our Student Art Exhibition, showcasing works from all grade levels.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </article>
+                </div>
+            </div>
+            <div class="tab-content" id="events-tab">
+                <div class="events-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="day">01</span>
+                            <span class="month">Jul</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Parent-Teacher Conference</h3>
+                            <p>Annual meeting to discuss student progress and school initiatives.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="day">15</span>
+                            <span class="month">Jul</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Annual Sports Day</h3>
+                            <p>A day of athletic competitions and school spirit.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="day">05</span>
+                            <span class="month">Aug</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Back to School Night</h3>
+                            <p>Welcome event for new and returning students and their families.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="day">20</span>
+                            <span class="month">Aug</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Science Fair</h3>
+                            <p>Showcase of student science projects and innovations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="school-gallery">
+        <div class="container">
+            <h2>School Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/gallery1.jpg" alt="School Building">
+                    <div class="gallery-caption">Our Modern School Building</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery2.jpg" alt="Science Lab">
+                    <div class="gallery-caption">State-of-the-art Science Lab</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery3.jpg" alt="Sports Field">
+                    <div class="gallery-caption">Our Spacious Sports Field</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery4.jpg" alt="Library">
+                    <div class="gallery-caption">Well-stocked Library</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery5.jpg" alt="Computer Lab">
+                    <div class="gallery-caption">Modern Computer Lab</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery6.jpg" alt="Art Class">
+                    <div class="gallery-caption">Creative Art Class</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="img/badge1.png" alt="Nyapui Secondary School of Excellence Logo" class="footer-logo">
+                <h2>Nyapui Secondary School of Excellence</h2>
+                <p>Combema Village, Kenema</p>
+                <p>Sierra Leone</p>
+                <p>+232 78 894260</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/facebook.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/instagram.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/youtube.png" alt="YouTube"></a>
+                    <a href="mailto:nyapuischool@gmail.com" class="social-icon"><img src="img/em.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="academics.html">Academics</a>
+                    <a href="admission.html">Admissions</a>
+                    <a href="news.html">News and Events</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">Jobs at Nyapui</a>
+                    <a href="#">Resource Lab</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
+                if (!isClickInside && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // Close menu when window is resized to larger than mobile breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // Animate news items on scroll
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function animateNewsItems() {
+                var newsItems = document.querySelectorAll('.news-item');
+                newsItems.forEach(function(item) {
+                    if (isElementInViewport(item)) {
+                        item.classList.add('animate');
+                    }
+                });
+            }
+
+            window.addEventListener('load', animateNewsItems);
+            window.addEventListener('scroll', animateNewsItems);
+            window.addEventListener('resize', animateNewsItems);
+
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    button.classList.add('active');
+                    document.getElementById(`${tabName}-tab`).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
